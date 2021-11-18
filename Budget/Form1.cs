@@ -16,5 +16,18 @@ namespace Budget
         {
             InitializeComponent();
         }
+
+        //Form1が表示されたら発生するイベント
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            //年月の表示
+            label2.Text = DateTime.Now.ToString("yyyy年MM月");
+            //食費の合計金額表示
+            SQL s = new SQL();
+            string syokuhi = s.GetSum();
+            label5.Text = $"\\ {syokuhi}";
+        }
+
+
     }
 }
