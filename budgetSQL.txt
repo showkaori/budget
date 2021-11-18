@@ -13,8 +13,9 @@ month char(6) not null,
 PRIMARY KEY (id)
 );
 
-insert into expenditure (detail, memo, category,money,payment,day, month) values('夕食の材料','スーパーで購入', '食費', 3580, '現金', '2001-11-18 18:30:00', '202111');
-insert into expenditure (detail, category,money,payment,day, month) values('定期代', '交通費', 10000, 'クレジットカード', '2001-11-01 09:00:00', '202111');
+insert into expenditure (detail, memo, category,money,payment,day, month) values('夕食の材料','スーパーで購入', '食費', 3580, '現金', '2021-11-18 18:30:00', '202111');
+insert into expenditure (detail, category,money,payment,day, month) values('定期代', '交通費', 10000, 'クレジットカード', '2021-11-01 09:00:00', '202111');
+insert into expenditure (detail, category,money,payment,day, month) values('ナマステ堂', '外食', 650, '現金', '2021-11-01 09:00:00', '202111');
 
 SELECT SUM(money) FROM expenditure WHERE CATEGORY = '食費' AND MONTH = '202111';
 SELECT category, SUM(money) FROM expenditure WHERE MONTH = '202111' GROUP BY  CATEGORY;
