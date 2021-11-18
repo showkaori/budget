@@ -1,0 +1,13 @@
+データベース：budget
+
+
+create table expenditure(
+id int not null auto_increment,
+detail VARCHAR(20) not null,
+memo VARCHAR(200),
+category VARCHAR(20) not null,
+money int not null,
+payment VARCHAR(20) not null,
+day DATETIME not null,
+PRIMARY KEY (id)
+);
