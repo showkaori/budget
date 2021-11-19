@@ -67,7 +67,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(25, 17);
+            this.label1.Location = new System.Drawing.Point(27, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 34);
             this.label1.TabIndex = 0;
@@ -107,16 +107,19 @@
             // 
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button1.Location = new System.Drawing.Point(16, 135);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 31);
             this.button1.TabIndex = 4;
             this.button1.Text = "追加";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button2.Location = new System.Drawing.Point(1041, 135);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 31);
             this.button2.TabIndex = 5;
@@ -310,7 +313,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(182, 182);
+            this.label5.Location = new System.Drawing.Point(181, 182);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 19);
             this.label5.TabIndex = 32;
@@ -320,7 +323,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(182, 210);
+            this.label6.Location = new System.Drawing.Point(181, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 19);
             this.label6.TabIndex = 33;
@@ -330,7 +333,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(182, 240);
+            this.label7.Location = new System.Drawing.Point(181, 240);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 19);
             this.label7.TabIndex = 34;
@@ -340,7 +343,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(182, 270);
+            this.label8.Location = new System.Drawing.Point(181, 270);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 19);
             this.label8.TabIndex = 35;
@@ -350,7 +353,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label9.Location = new System.Drawing.Point(182, 300);
+            this.label9.Location = new System.Drawing.Point(181, 300);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 19);
             this.label9.TabIndex = 36;
@@ -360,7 +363,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.Location = new System.Drawing.Point(182, 330);
+            this.label10.Location = new System.Drawing.Point(181, 330);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 19);
             this.label10.TabIndex = 37;
@@ -370,7 +373,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label11.Location = new System.Drawing.Point(182, 360);
+            this.label11.Location = new System.Drawing.Point(181, 360);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 19);
             this.label11.TabIndex = 38;
@@ -380,7 +383,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label12.Location = new System.Drawing.Point(182, 390);
+            this.label12.Location = new System.Drawing.Point(181, 390);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 19);
             this.label12.TabIndex = 39;
@@ -390,7 +393,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label13.Location = new System.Drawing.Point(182, 420);
+            this.label13.Location = new System.Drawing.Point(181, 420);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 19);
             this.label13.TabIndex = 40;
@@ -400,7 +403,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label14.Location = new System.Drawing.Point(182, 450);
+            this.label14.Location = new System.Drawing.Point(181, 450);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 19);
             this.label14.TabIndex = 41;
@@ -410,7 +413,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(182, 480);
+            this.label15.Location = new System.Drawing.Point(181, 480);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 19);
             this.label15.TabIndex = 42;
@@ -420,7 +423,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label16.Location = new System.Drawing.Point(182, 510);
+            this.label16.Location = new System.Drawing.Point(181, 510);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(52, 19);
             this.label16.TabIndex = 43;
@@ -430,7 +433,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label17.Location = new System.Drawing.Point(182, 540);
+            this.label17.Location = new System.Drawing.Point(181, 540);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(52, 19);
             this.label17.TabIndex = 44;
@@ -440,7 +443,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label18.Location = new System.Drawing.Point(182, 112);
+            this.label18.Location = new System.Drawing.Point(181, 112);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(85, 19);
             this.label18.TabIndex = 45;
@@ -450,7 +453,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 601);
+            this.ClientSize = new System.Drawing.Size(1179, 601);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -484,6 +487,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -513,20 +517,20 @@
         private System.Windows.Forms.LinkLabel linkLabel11;
         private System.Windows.Forms.LinkLabel linkLabel12;
         private System.Windows.Forms.LinkLabel linkLabel13;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.Label label7;
+        internal System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.Label label9;
+        internal System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.Label label12;
+        internal System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.Label label14;
+        internal System.Windows.Forms.Label label15;
+        internal System.Windows.Forms.Label label16;
+        internal System.Windows.Forms.Label label17;
     }
 }
 

@@ -52,5 +52,17 @@ namespace Budget
         {
             //食費の全リスト表示
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            /*追加ボタンクリックでForm2を開く
+            Form2 frmForm2 = new Form2();
+            frmForm2.ShowDialog();  */
+
+            Form2 f2 = new Form2(this); // 自フォームへの参照を渡す
+            f2.Show(); // サブ・フォームを表示
+        }
+
+
     }
 }
