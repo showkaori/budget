@@ -61,6 +61,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -449,11 +450,21 @@
             this.label18.TabIndex = 45;
             this.label18.Text = "合計金額";
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(262, 182);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(547, 377);
+            this.listView1.TabIndex = 46;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 601);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -517,7 +528,6 @@
         private System.Windows.Forms.LinkLabel linkLabel11;
         private System.Windows.Forms.LinkLabel linkLabel12;
         private System.Windows.Forms.LinkLabel linkLabel13;
-        private System.Windows.Forms.Label label18;
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Label label7;
@@ -531,6 +541,8 @@
         internal System.Windows.Forms.Label label15;
         internal System.Windows.Forms.Label label16;
         internal System.Windows.Forms.Label label17;
+        internal System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

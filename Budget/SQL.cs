@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;// MySQLを使用
+using System.Collections.ObjectModel;
+
 
 namespace Budget
 {
@@ -20,7 +22,7 @@ namespace Budget
         private static readonly string connectionString = string.Format("Server={0};Database={1};Uid={2};Pwd={3};Charset={4}", server, database, user, pass, charset);
 
 
-        //カテゴリー別のその月の合計金額取得
+        //【カテゴリー別のその月の合計金額取得】
         public List<string> GetSum()
         {
             //カテゴリー別の合計金額をリスト格納する箱を用意
@@ -63,8 +65,49 @@ namespace Budget
             return sum;
         }
 
+        //【食費カテゴリー一覧表示】
+        internal List<Expenditure> GetSyokuhi()
+        {
+            List<Expenditure> syokuhiList = new List<Expenditure>();
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
 
-        //データの追加
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '食費'";
+                    command.CommandText = SelectSql;
+                    //SQL実行し結果を格納
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = int.Parse(reader.GetString(0));
+                        string detail = reader.GetString(1);
+                        string memo = reader.GetString(2);
+                        string category = reader.GetString(3);
+                        int money = int.Parse(reader.GetString(4));
+                        string payment = reader.GetString(5);
+                        DateTime day = DateTime.Parse(reader.GetString(6));
+                        string month = reader.GetString(7);
+                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
+                        syokuhiList.Add(exp);
+                    }
+                    reader.Close();
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return syokuhiList;
+        }
+
+        
+        //【データの追加】
         public void AddExp(DateTime day, string category, string detail, int money, string payment, string memo, string month)
         {
             try

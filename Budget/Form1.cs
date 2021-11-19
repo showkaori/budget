@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;// MySQLを使用
+using System.Collections.ObjectModel;
 
 namespace Budget
 {
     public partial class Form1 : Form
-            {
+    {
         public Form1()
         {
             InitializeComponent();
@@ -50,19 +52,33 @@ namespace Budget
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //食費の全リスト表示
+            //食費をListViewに表示
+            SQL s = new SQL();
+            List<Expenditure> syokuhinList = s.GetSyokuhi();
+
+
+
+            /*
+            foreach (Expenditure exp in syokuhinList)
+            {
+                //データが取得できているか
+                string[] a = exp.DataStr();
+                Console.Write(a[0]);
+                Console.Write(a[1]);
+                Console.Write(a[2]);
+                Console.Write(a[3]);
+                Console.Write(a[4]);
+                Console.WriteLine(a[5]);
+                //listViewに表示
+                listView1.Items.Add(new ListViewItem(a));
+            }
+            */
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            /*追加ボタンクリックでForm2を開く
-            Form2 frmForm2 = new Form2();
-            frmForm2.ShowDialog();  */
-
             Form2 f2 = new Form2(this); // 自フォームへの参照を渡す
             f2.Show(); // サブ・フォームを表示
         }
-
-
     }
 }

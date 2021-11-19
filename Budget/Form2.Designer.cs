@@ -48,9 +48,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Location = new System.Drawing.Point(27, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 27);
+            this.label1.Size = new System.Drawing.Size(117, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "【追加】";
             // 
@@ -58,27 +59,30 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(90, 70);
+            this.label2.Location = new System.Drawing.Point(120, 88);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "日付：";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(150, 67);
+            this.dateTimePicker1.Location = new System.Drawing.Point(200, 84);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(265, 26);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(65, 130);
+            this.label3.Location = new System.Drawing.Point(87, 162);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 16);
+            this.label3.Size = new System.Drawing.Size(91, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "カテゴリー：";
             // 
@@ -86,9 +90,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(74, 190);
+            this.label4.Location = new System.Drawing.Point(99, 238);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 16);
+            this.label4.Size = new System.Drawing.Size(79, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "購入品：";
             // 
@@ -96,9 +101,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(90, 250);
+            this.label5.Location = new System.Drawing.Point(120, 312);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "金額：";
             // 
@@ -106,9 +112,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(45, 310);
+            this.label6.Location = new System.Drawing.Point(60, 388);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "支払い方法：";
             // 
@@ -116,18 +123,20 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(99, 370);
+            this.label7.Location = new System.Drawing.Point(132, 462);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 16);
+            this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 7;
             this.label7.Text = "メモ：";
             // 
             // Button1
             // 
             this.Button1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Button1.Location = new System.Drawing.Point(69, 430);
+            this.Button1.Location = new System.Drawing.Point(92, 538);
+            this.Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(68, 26);
+            this.Button1.Size = new System.Drawing.Size(91, 32);
             this.Button1.TabIndex = 8;
             this.Button1.Text = "登録";
             this.Button1.UseVisualStyleBackColor = true;
@@ -151,28 +160,31 @@
             "保険",
             "税金",
             "その他"});
-            this.comboBox1.Location = new System.Drawing.Point(150, 126);
+            this.comboBox1.Location = new System.Drawing.Point(200, 158);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 23);
+            this.comboBox1.Size = new System.Drawing.Size(265, 26);
             this.comboBox1.TabIndex = 9;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.textBox1.Location = new System.Drawing.Point(150, 187);
+            this.textBox1.Location = new System.Drawing.Point(200, 234);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.MaxLength = 20;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
+            this.textBox1.Size = new System.Drawing.Size(265, 26);
             this.textBox1.TabIndex = 10;
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox2.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.textBox2.Location = new System.Drawing.Point(150, 247);
+            this.textBox2.Location = new System.Drawing.Point(200, 309);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 22);
+            this.textBox2.Size = new System.Drawing.Size(265, 26);
             this.textBox2.TabIndex = 11;
             // 
             // comboBox2
@@ -186,9 +198,10 @@
             "口座引落",
             "プリペイドカード",
             "電子マネー"});
-            this.comboBox2.Location = new System.Drawing.Point(150, 306);
+            this.comboBox2.Location = new System.Drawing.Point(200, 382);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 23);
+            this.comboBox2.Size = new System.Drawing.Size(265, 26);
             this.comboBox2.TabIndex = 12;
             // 
             // textBox3
@@ -196,19 +209,20 @@
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox3.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.textBox3.Location = new System.Drawing.Point(150, 367);
+            this.textBox3.Location = new System.Drawing.Point(200, 459);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.MaxLength = 200;
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox3.Size = new System.Drawing.Size(341, 50);
+            this.textBox3.Size = new System.Drawing.Size(453, 62);
             this.textBox3.TabIndex = 30;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 481);
+            this.ClientSize = new System.Drawing.Size(688, 601);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.textBox2);
@@ -223,8 +237,10 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

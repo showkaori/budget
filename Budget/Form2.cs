@@ -37,6 +37,7 @@ namespace Budget
             s.AddExp(day, category, detail, money, payment, memo, month);
             //更新後の情報を受け取る
             List<string> sum = s.GetSum();
+            //Form1の情報を更新する
             f1.label5.Text = $"\\ {sum[0]}";
             f1.label6.Text = $"\\ {sum[1]}";
             f1.label7.Text = $"\\ {sum[2]}";
@@ -51,8 +52,20 @@ namespace Budget
             f1.label16.Text = $"\\ {sum[11]}";
             f1.label17.Text = $"\\ {sum[12]}";
 
-            this.Close();   //フォームを消す
+            //合計金額を出す
+            int sum1 = 0;
+            foreach (var a in sum)
+            {
+                sum1 += int.Parse(a);
+            }
+            f1.label18.Text = $"\\ {sum1}";
+
+            this.Close();   //Form2を消す
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
