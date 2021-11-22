@@ -52,33 +52,46 @@ namespace Budget
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            listView1.Items.Clear();
             //食費をListViewに表示
             SQL s = new SQL();
             List<Expenditure> syokuhinList = s.GetSyokuhi();
 
-
-
-            /*
+            ListViewItem lvi;
             foreach (Expenditure exp in syokuhinList)
             {
-                //データが取得できているか
-                string[] a = exp.DataStr();
-                Console.Write(a[0]);
-                Console.Write(a[1]);
-                Console.Write(a[2]);
-                Console.Write(a[3]);
-                Console.Write(a[4]);
-                Console.WriteLine(a[5]);
-                //listViewに表示
-                listView1.Items.Add(new ListViewItem(a));
+                lvi = listView1.Items.Add(exp.Id.ToString());
+                lvi.SubItems.Add(exp.Day.ToString());
+                lvi.SubItems.Add(exp.Detail);
+                lvi.SubItems.Add(exp.Money.ToString());
+                lvi.SubItems.Add(exp.Payment);
+                lvi.SubItems.Add(exp.Memo);
             }
-            */
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2(this); // 自フォームへの参照を渡す
             f2.Show(); // サブ・フォームを表示
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            listView1.Items.Clear();
+            //食費をListViewに表示
+            SQL s = new SQL();
+            List<Expenditure> gaisyokuList = s.GetGaisyokuy();
+
+            ListViewItem lvi;
+            foreach (Expenditure exp in gaisyokuList)
+            {
+                lvi = listView1.Items.Add(exp.Id.ToString());
+                lvi.SubItems.Add(exp.Day.ToString());
+                lvi.SubItems.Add(exp.Detail);
+                lvi.SubItems.Add(exp.Money.ToString());
+                lvi.SubItems.Add(exp.Payment);
+                lvi.SubItems.Add(exp.Memo);
+            }
         }
     }
 }

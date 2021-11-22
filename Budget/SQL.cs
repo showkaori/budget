@@ -106,7 +106,56 @@ namespace Budget
             return syokuhiList;
         }
 
-        
+        //【外食一覧表示】
+        internal List<Expenditure> GetGaisyokuy()
+        {
+            List<Expenditure> gaisyokuList = new List<Expenditure>();
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '外食'";
+                    command.CommandText = SelectSql;
+                    //SQL実行し結果を格納
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = int.Parse(reader.GetString(0));
+                        string detail = reader.GetString(1);
+                        string memo;
+                        if (reader.GetString(2) == null)
+                        {
+                            memo = "　";
+                        }
+                        else
+                        {
+                            memo = reader.GetString(2);
+                        }                        
+                        string category = reader.GetString(3);
+                        int money = int.Parse(reader.GetString(4));
+                        string payment = reader.GetString(5);
+                        DateTime day = DateTime.Parse(reader.GetString(6));
+                        string month = reader.GetString(7);
+                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
+                        gaisyokuList.Add(exp);
+                    }
+                    reader.Close();
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return gaisyokuList;
+        }
+
+
         //【データの追加】
         public void AddExp(DateTime day, string category, string detail, int money, string payment, string memo, string month)
         {

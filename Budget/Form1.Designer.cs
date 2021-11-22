@@ -62,6 +62,12 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.日付 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.購入物 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.金額 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.支払い方法 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.メモ = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -155,6 +161,7 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "■外食";
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // linkLabel3
             // 
@@ -452,12 +459,45 @@
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.日付,
+            this.購入物,
+            this.金額,
+            this.支払い方法,
+            this.メモ});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(262, 182);
+            this.listView1.Location = new System.Drawing.Point(269, 182);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(547, 377);
+            this.listView1.Scrollable = false;
+            this.listView1.Size = new System.Drawing.Size(592, 377);
             this.listView1.TabIndex = 46;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // 日付
+            // 
+            this.日付.Text = "日付";
+            // 
+            // 購入物
+            // 
+            this.購入物.Text = "購入物";
+            // 
+            // 金額
+            // 
+            this.金額.Text = "金額";
+            // 
+            // 支払い方法
+            // 
+            this.支払い方法.Text = "支払い方法";
+            // 
+            // メモ
+            // 
+            this.メモ.Text = "メモ";
             // 
             // Form1
             // 
@@ -543,6 +583,12 @@
         internal System.Windows.Forms.Label label17;
         internal System.Windows.Forms.Label label18;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader 日付;
+        private System.Windows.Forms.ColumnHeader 購入物;
+        private System.Windows.Forms.ColumnHeader 金額;
+        private System.Windows.Forms.ColumnHeader 支払い方法;
+        private System.Windows.Forms.ColumnHeader メモ;
     }
 }
 
