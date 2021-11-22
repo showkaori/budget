@@ -92,6 +92,50 @@ namespace Budget
             }
         }
 
+        //【出費一覧表示】
+        internal List<Expenditure> GetAllList()
+        {
+            List<Expenditure> getAllList = new List<Expenditure>();
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+
+                    string SelectSql = $"SELECT * FROM {MysqlTable} ORDER BY day";
+                    command.CommandText = SelectSql;
+                    //SQL実行し結果を格納
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = int.Parse(reader.GetString(0));
+                        string detail = reader.GetString(1);
+                        string memo;
+                        if (reader.GetString(2) == null)
+                        { memo = "　"; }
+                        else
+                        { memo = reader.GetString(2); }
+                        string category = reader.GetString(3);
+                        int money = int.Parse(reader.GetString(4));
+                        string payment = reader.GetString(5);
+                        DateTime day = DateTime.Parse(reader.GetString(6));
+                        string month = reader.GetString(7);
+                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
+                        getAllList.Add(exp);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return getAllList;
+        }
+
         //【カテゴリー別一覧表示】
         internal List<Expenditure> GetList(int num)
         {
@@ -106,50 +150,8 @@ namespace Budget
                     command.Connection = connection;
 
                     //カテゴリーの取得
-                    string cate = "";
-                    switch(num)
-                    {
-                        case 1:
-                            cate = "食費";
-                            break;
-                        case 2:
-                            cate = "外食";
-                            break;
-                        case 3:
-                            cate = "交通費";
-                            break;
-                        case 4:
-                            cate = "日用品";
-                            break;
-                        case 5:
-                            cate = "遊び";
-                            break;
-                        case 6:
-                            cate = "洋服・美容";
-                            break;
-                        case 7:
-                            cate = "教養";
-                            break;
-                        case 8:
-                            cate = "家族";
-                            break;
-                        case 9:
-                            cate = "家賃・住まい";
-                            break;
-                        case 10:
-                            cate = "光熱費";
-                            break;
-                        case 11:
-                            cate = "保険";
-                            break;
-                        case 12:
-                            cate = "税金";
-                            break;
-                        case 13:
-                            cate = "その他";
-                            break;
-                    }
-                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '{cate}'";
+                    var categoryList = new string[] { "食費", "外食", "交通費", "日用品", "遊び", "洋服・美容", "教養", "家族", "家賃・住まい", "光熱費", "保険", "税金", "その他" };
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '{categoryList[(num - 1)]}' ORDER BY day";
                     command.CommandText = SelectSql;
                     //SQL実行し結果を格納
                     MySqlDataReader reader = command.ExecuteReader();
@@ -178,6 +180,104 @@ namespace Budget
                 Console.WriteLine(e.Message);
             }
             return getList;
+        }
+
+        //データの編集
+        internal void Update(string id, DateTime day, string category, string detail, string money, string payment, string memo, string month)
+        {
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    int id1 = int.Parse(id);
+                    int money1 = int.Parse(money);
+                    //INSERT用SQL
+                    string UpdateSql = $"UPDATE {MysqlTable} SET detail = '{detail}', memo = '{memo}', category = '{category}', money = {money1}, payment = '{payment}', day = '{day}', month = '{month}' WHERE ID = {id1}";
+                    command.CommandText = UpdateSql;
+                    command.ExecuteNonQuery(); //実行
+                }
+
+            }
+            catch (Exception e2)
+            {
+                Console.WriteLine(e2.Message);
+
+            }
+        }
+
+        //【選択したデータの削除】
+        internal void Delete(string id)
+        {
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+
+                    //カテゴリーの取得
+                    int id1 = int.Parse(id);
+                    string DeleteSql = $"DELETE FROM {MysqlTable} WHERE ID = {id1}";
+                    command.CommandText = DeleteSql;
+                    command.ExecuteNonQuery();           //実行
+                    Console.WriteLine($"【ID:{id}】のデータを消去しました。");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        //【選択したデータの取得】
+        internal Expenditure Select(string id)
+        {
+            Expenditure exp = null;
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+
+                    //カテゴリーの取得
+                    int id1 = int.Parse(id);
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE ID = {id1}";
+                    command.CommandText = SelectSql;
+                    //SQL実行し結果を格納
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id2 = int.Parse(reader.GetString(0));
+                        string detail = reader.GetString(1);
+                        string memo;
+                        if (reader.GetString(2) == null)
+                        { memo = "　"; }
+                        else
+                        { memo = reader.GetString(2); }
+                        string category = reader.GetString(3);
+                        int money = int.Parse(reader.GetString(4));
+                        string payment = reader.GetString(5);
+                        DateTime day = DateTime.Parse(reader.GetString(6));
+                        string month = reader.GetString(7);
+                        exp = new Expenditure(id2, detail, memo, category, money, payment, day, month);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return exp;
         }
 
 
