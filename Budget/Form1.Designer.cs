@@ -64,7 +64,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.日付 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.購入物 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.支払い対象 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.金額 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.支払い方法 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.メモ = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -176,6 +176,7 @@
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "■交通費";
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // linkLabel4
             // 
@@ -190,6 +191,7 @@
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "■日用品";
             this.linkLabel4.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // linkLabel5
             // 
@@ -204,6 +206,7 @@
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "■遊び";
             this.linkLabel5.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
             // 
             // linkLabel6
             // 
@@ -218,6 +221,7 @@
             this.linkLabel6.TabStop = true;
             this.linkLabel6.Text = "■洋服・美容";
             this.linkLabel6.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
             // 
             // linkLabel7
             // 
@@ -232,6 +236,7 @@
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "■教養";
             this.linkLabel7.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLabel8
             // 
@@ -246,6 +251,7 @@
             this.linkLabel8.TabStop = true;
             this.linkLabel8.Text = "■家族";
             this.linkLabel8.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel8_LinkClicked);
             // 
             // linkLabel9
             // 
@@ -260,6 +266,7 @@
             this.linkLabel9.TabStop = true;
             this.linkLabel9.Text = "■家賃・住まい";
             this.linkLabel9.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel9.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel9_LinkClicked);
             // 
             // linkLabel10
             // 
@@ -274,6 +281,7 @@
             this.linkLabel10.TabStop = true;
             this.linkLabel10.Text = "■光熱費";
             this.linkLabel10.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel10.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel10_LinkClicked);
             // 
             // linkLabel11
             // 
@@ -288,6 +296,7 @@
             this.linkLabel11.TabStop = true;
             this.linkLabel11.Text = "■保険";
             this.linkLabel11.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel11.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel11_LinkClicked);
             // 
             // linkLabel12
             // 
@@ -302,6 +311,7 @@
             this.linkLabel12.TabStop = true;
             this.linkLabel12.Text = "■税金";
             this.linkLabel12.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel12.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel12_LinkClicked);
             // 
             // linkLabel13
             // 
@@ -316,6 +326,7 @@
             this.linkLabel13.TabStop = true;
             this.linkLabel13.Text = "■その他";
             this.linkLabel13.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkLabel13.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel13_LinkClicked);
             // 
             // label5
             // 
@@ -462,12 +473,12 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.日付,
-            this.購入物,
+            this.支払い対象,
             this.金額,
             this.支払い方法,
             this.メモ});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(269, 182);
+            this.listView1.Location = new System.Drawing.Point(275, 182);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
             this.listView1.Size = new System.Drawing.Size(592, 377);
@@ -478,26 +489,31 @@
             // ID
             // 
             this.ID.Text = "ID";
+            this.ID.Width = 25;
             // 
             // 日付
             // 
             this.日付.Text = "日付";
             // 
-            // 購入物
+            // 支払い対象
             // 
-            this.購入物.Text = "購入物";
+            this.支払い対象.Text = "支払い対象";
+            this.支払い対象.Width = 85;
             // 
             // 金額
             // 
             this.金額.Text = "金額";
+            this.金額.Width = 45;
             // 
             // 支払い方法
             // 
             this.支払い方法.Text = "支払い方法";
+            this.支払い方法.Width = 85;
             // 
             // メモ
             // 
             this.メモ.Text = "メモ";
+            this.メモ.Width = 200;
             // 
             // Form1
             // 
@@ -585,7 +601,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader 日付;
-        private System.Windows.Forms.ColumnHeader 購入物;
+        private System.Windows.Forms.ColumnHeader 支払い対象;
         private System.Windows.Forms.ColumnHeader 金額;
         private System.Windows.Forms.ColumnHeader 支払い方法;
         private System.Windows.Forms.ColumnHeader メモ;

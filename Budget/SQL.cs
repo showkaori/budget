@@ -65,97 +65,6 @@ namespace Budget
             return sum;
         }
 
-        //【食費カテゴリー一覧表示】
-        internal List<Expenditure> GetSyokuhi()
-        {
-            List<Expenditure> syokuhiList = new List<Expenditure>();
-            try
-            {
-                // コネクションオブジェクトとコマンドオブジェクトの生成
-                using (var connection = new MySqlConnection(connectionString))
-                using (var command = new MySqlCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-
-                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '食費'";
-                    command.CommandText = SelectSql;
-                    //SQL実行し結果を格納
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        int id = int.Parse(reader.GetString(0));
-                        string detail = reader.GetString(1);
-                        string memo = reader.GetString(2);
-                        string category = reader.GetString(3);
-                        int money = int.Parse(reader.GetString(4));
-                        string payment = reader.GetString(5);
-                        DateTime day = DateTime.Parse(reader.GetString(6));
-                        string month = reader.GetString(7);
-                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
-                        syokuhiList.Add(exp);
-                    }
-                    reader.Close();
-                    
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return syokuhiList;
-        }
-
-        //【外食一覧表示】
-        internal List<Expenditure> GetGaisyokuy()
-        {
-            List<Expenditure> gaisyokuList = new List<Expenditure>();
-            try
-            {
-                // コネクションオブジェクトとコマンドオブジェクトの生成
-                using (var connection = new MySqlConnection(connectionString))
-                using (var command = new MySqlCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-
-                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '外食'";
-                    command.CommandText = SelectSql;
-                    //SQL実行し結果を格納
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        int id = int.Parse(reader.GetString(0));
-                        string detail = reader.GetString(1);
-                        string memo;
-                        if (reader.GetString(2) == null)
-                        {
-                            memo = "　";
-                        }
-                        else
-                        {
-                            memo = reader.GetString(2);
-                        }                        
-                        string category = reader.GetString(3);
-                        int money = int.Parse(reader.GetString(4));
-                        string payment = reader.GetString(5);
-                        DateTime day = DateTime.Parse(reader.GetString(6));
-                        string month = reader.GetString(7);
-                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
-                        gaisyokuList.Add(exp);
-                    }
-                    reader.Close();
-
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return gaisyokuList;
-        }
-
-
         //【データの追加】
         public void AddExp(DateTime day, string category, string detail, int money, string payment, string memo, string month)
         {
@@ -182,6 +91,95 @@ namespace Budget
 
             }
         }
+
+        //【カテゴリー別一覧表示】
+        internal List<Expenditure> GetList(int num)
+        {
+            List<Expenditure> getList = new List<Expenditure>();
+            try
+            {
+                // コネクションオブジェクトとコマンドオブジェクトの生成
+                using (var connection = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+
+                    //カテゴリーの取得
+                    string cate = "";
+                    switch(num)
+                    {
+                        case 1:
+                            cate = "食費";
+                            break;
+                        case 2:
+                            cate = "外食";
+                            break;
+                        case 3:
+                            cate = "交通費";
+                            break;
+                        case 4:
+                            cate = "日用品";
+                            break;
+                        case 5:
+                            cate = "遊び";
+                            break;
+                        case 6:
+                            cate = "洋服・美容";
+                            break;
+                        case 7:
+                            cate = "教養";
+                            break;
+                        case 8:
+                            cate = "家族";
+                            break;
+                        case 9:
+                            cate = "家賃・住まい";
+                            break;
+                        case 10:
+                            cate = "光熱費";
+                            break;
+                        case 11:
+                            cate = "保険";
+                            break;
+                        case 12:
+                            cate = "税金";
+                            break;
+                        case 13:
+                            cate = "その他";
+                            break;
+                    }
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '{cate}'";
+                    command.CommandText = SelectSql;
+                    //SQL実行し結果を格納
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = int.Parse(reader.GetString(0));
+                        string detail = reader.GetString(1);
+                        string memo;
+                        if (reader.GetString(2) == null)
+                        { memo = "　"; }
+                        else
+                        { memo = reader.GetString(2); }
+                        string category = reader.GetString(3);
+                        int money = int.Parse(reader.GetString(4));
+                        string payment = reader.GetString(5);
+                        DateTime day = DateTime.Parse(reader.GetString(6));
+                        string month = reader.GetString(7);
+                        Expenditure exp = new Expenditure(id, detail, memo, category, money, payment, day, month);
+                        getList.Add(exp);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return getList;
+        }
+
 
     }
 }
