@@ -23,7 +23,7 @@ namespace Budget
 
 
         //【カテゴリー別のその月の合計金額取得】
-        public List<string> GetSum()
+        public List<string> GetSum(string month)
         {
             //カテゴリー別の合計金額をリスト格納する箱を用意
             List<string> sum = new List<string>();
@@ -41,9 +41,8 @@ namespace Budget
                     for(var i = 0; i < categoryList.Length; i++)
                     {
                         //データ抽出用SQL
-                        string thisMonth = DateTime.Now.ToString("yyyyMM");
                         string category = categoryList[i];
-                        string SelectSql = $"SELECT IFNULL(SUM(money), '0') FROM {MysqlTable} WHERE MONTH = '{thisMonth}' AND CATEGORY = '{category}'";
+                        string SelectSql = $"SELECT IFNULL(SUM(money), '0') FROM {MysqlTable} WHERE MONTH = '{month}' AND CATEGORY = '{category}'";
 
                         command.CommandText = SelectSql;
                         //SQL実行し結果を格納
@@ -93,7 +92,7 @@ namespace Budget
         }
 
         //【出費一覧表示】
-        internal List<Expenditure> GetAllList()
+        internal List<Expenditure> GetAllList(string month1)
         {
             List<Expenditure> getAllList = new List<Expenditure>();
             try
@@ -105,7 +104,7 @@ namespace Budget
                     connection.Open();
                     command.Connection = connection;
 
-                    string SelectSql = $"SELECT * FROM {MysqlTable} ORDER BY day";
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE MONTH = '{month1}' ORDER BY day";
                     command.CommandText = SelectSql;
                     //SQL実行し結果を格納
                     MySqlDataReader reader = command.ExecuteReader();
@@ -137,7 +136,7 @@ namespace Budget
         }
 
         //【カテゴリー別一覧表示】
-        internal List<Expenditure> GetList(int num)
+        internal List<Expenditure> GetList(int num, string month1)
         {
             List<Expenditure> getList = new List<Expenditure>();
             try
@@ -151,7 +150,7 @@ namespace Budget
 
                     //カテゴリーの取得
                     var categoryList = new string[] { "食費", "外食", "交通費", "日用品", "遊び", "洋服・美容", "教養", "家族", "家賃・住まい", "光熱費", "保険", "税金", "その他" };
-                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '{categoryList[(num - 1)]}' ORDER BY day";
+                    string SelectSql = $"SELECT * FROM {MysqlTable} WHERE CATEGORY = '{categoryList[(num - 1)]}' AND MONTH = {month1} ORDER BY day";
                     command.CommandText = SelectSql;
                     //SQL実行し結果を格納
                     MySqlDataReader reader = command.ExecuteReader();

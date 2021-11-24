@@ -23,11 +23,11 @@ namespace Budget
         //【Form1が表示されたら発生するイベント】
         private void Form1_Shown(object sender, EventArgs e)
         {
-            //年月の表示
-            label2.Text = DateTime.Now.ToString("yyyy年MM月");
+            //月の取得
+            var month = DateTime.Now.ToString("yyyyMM");
             //カテゴリー別合計金額表示
             SQL s = new SQL();
-            List<string> sum = s.GetSum();
+            List<string> sum = s.GetSum(month);
             label5.Text = $"\\ {sum[0]}";
             label6.Text = $"\\ {sum[1]}";
             label7.Text = $"\\ {sum[2]}";
@@ -54,7 +54,7 @@ namespace Budget
             listView1.Items.Clear();
             //出費をListViewに表示
             SQL s1 = new SQL();
-            List<Expenditure> allList = s1.GetAllList();
+            List<Expenditure> allList = s1.GetAllList(month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in allList)
@@ -74,7 +74,8 @@ namespace Budget
             listView1.Items.Clear();
             //出費をListViewに表示
             SQL s = new SQL();
-            List<Expenditure> allList = s.GetAllList();
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
+            List<Expenditure> allList = s.GetAllList(month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in allList)
@@ -100,8 +101,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //食費をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> syokuhinList = s.GetList(1);
+            List<Expenditure> syokuhinList = s.GetList(1, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in syokuhinList)
@@ -120,8 +122,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //外食をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> gaisyokuList = s.GetList(2);
+            List<Expenditure> gaisyokuList = s.GetList(2, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in gaisyokuList)
@@ -140,8 +143,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //交通費をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> koutsuList = s.GetList(3);
+            List<Expenditure> koutsuList = s.GetList(3, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in koutsuList)
@@ -160,8 +164,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //日用品をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> nitiList = s.GetList(4);
+            List<Expenditure> nitiList = s.GetList(4, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in nitiList)
@@ -180,8 +185,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //遊びをListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> asobiList = s.GetList(5);
+            List<Expenditure> asobiList = s.GetList(5, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in asobiList)
@@ -200,8 +206,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //洋服・美容をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> biList = s.GetList(6);
+            List<Expenditure> biList = s.GetList(6, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in biList)
@@ -220,8 +227,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //教養をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> kyouyouList = s.GetList(7);
+            List<Expenditure> kyouyouList = s.GetList(7, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in kyouyouList)
@@ -240,8 +248,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //家族をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> kazokuList = s.GetList(8);
+            List<Expenditure> kazokuList = s.GetList(8, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in kazokuList)
@@ -260,8 +269,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //家族をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> ieList = s.GetList(9);
+            List<Expenditure> ieList = s.GetList(9, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in ieList)
@@ -280,8 +290,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //光熱費をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> kounetsuList = s.GetList(10);
+            List<Expenditure> kounetsuList = s.GetList(10, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in kounetsuList)
@@ -300,8 +311,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //保険をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> hokenList = s.GetList(11);
+            List<Expenditure> hokenList = s.GetList(11, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in hokenList)
@@ -320,8 +332,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //税金をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> zeikinList = s.GetList(12);
+            List<Expenditure> zeikinList = s.GetList(12, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in zeikinList)
@@ -340,8 +353,9 @@ namespace Budget
         {
             listView1.Items.Clear();
             //その他をListViewに表示
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             SQL s = new SQL();
-            List<Expenditure> sonotaList = s.GetList(13);
+            List<Expenditure> sonotaList = s.GetList(13, month);
 
             ListViewItem lvi;
             foreach (Expenditure exp in sonotaList)
@@ -358,6 +372,7 @@ namespace Budget
         //【リストボックスで選択したデータの削除】
         private void button3_Click(object sender, EventArgs e)
         {
+            var month = dateTimePicker1.Value.ToString("yyyyMM");
             if (listView1.SelectedItems.Count > 0)
             {
                 //削除したいデータのID
@@ -368,7 +383,7 @@ namespace Budget
 
                 //カテゴリー別合計金額表示
                 SQL s1 = new SQL();
-                List<string> sum = s1.GetSum();
+                List<string> sum = s1.GetSum(month);
                 label5.Text = $"\\ {sum[0]}";
                 label6.Text = $"\\ {sum[1]}";
                 label7.Text = $"\\ {sum[2]}";
@@ -408,5 +423,54 @@ namespace Budget
                 f3.Show(); // サブ・フォームを表示
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string month = dateTimePicker1.Value.ToString("yyyyMM");
+            Console.WriteLine($"表示したいページは {month}");
+
+            //カテゴリー別合計金額表示
+            SQL s = new SQL();
+            List<string> sum = s.GetSum(month);
+            label5.Text = $"\\ {sum[0]}";
+            label6.Text = $"\\ {sum[1]}";
+            label7.Text = $"\\ {sum[2]}";
+            label8.Text = $"\\ {sum[3]}";
+            label9.Text = $"\\ {sum[4]}";
+            label10.Text = $"\\ {sum[5]}";
+            label11.Text = $"\\ {sum[6]}";
+            label12.Text = $"\\ {sum[7]}";
+            label13.Text = $"\\ {sum[8]}";
+            label14.Text = $"\\ {sum[9]}";
+            label15.Text = $"\\ {sum[10]}";
+            label16.Text = $"\\ {sum[11]}";
+            label17.Text = $"\\ {sum[12]}";
+
+            //合計金額を出す
+            int sum1 = 0;
+            foreach (var a in sum)
+            {
+                sum1 += int.Parse(a);
+            }
+            label18.Text = $"\\ {sum1}";
+
+            //ListViewに今月の全出費表示
+            listView1.Items.Clear();
+            //出費をListViewに表示
+            SQL s1 = new SQL();
+            List<Expenditure> allList = s1.GetAllList(month);
+
+            ListViewItem lvi;
+            foreach (Expenditure exp in allList)
+            {
+                lvi = listView1.Items.Add(exp.Id.ToString());
+                lvi.SubItems.Add(exp.strDay());
+                lvi.SubItems.Add(exp.Detail);
+                lvi.SubItems.Add(exp.Money.ToString());
+                lvi.SubItems.Add(exp.Payment);
+                lvi.SubItems.Add(exp.Memo);
+            }
+        }
+
     }
 }
