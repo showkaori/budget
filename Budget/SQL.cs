@@ -15,8 +15,8 @@ namespace Budget
         private static readonly string server = "localhost";
         private static readonly string database = "budget";//使用するデータベース
         private static readonly string MysqlTable = "expenditure";//使用するテーブル
-        private static readonly string user = "root";//ユーザー名
-        private static readonly string pass = "root";//インストール時に設定したパスワード
+        private static readonly string user = "****";//ユーザー名
+        private static readonly string pass = "****";//インストール時に設定したパスワード
         private static readonly string charset = "utf8";
         // MySQLへの接続
         private static readonly string connectionString = string.Format("Server={0};Database={1};Uid={2};Pwd={3};Charset={4}", server, database, user, pass, charset);

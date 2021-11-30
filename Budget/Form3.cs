@@ -7,53 +7,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Budget
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
         Form1 f1;
 
-        public Form2(Form1 f)
+        public Form3()
+        {
+        }
+
+        public Form3(Form1 f)
         {
             f1 = f; // メイン・フォームへの参照を保存
             InitializeComponent();
         }
 
-        //登録ボタンクリック
+        private void Form3_shown(object sender, EventArgs e)
+        {
+            //エラーアイコンを点滅させない
+            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider2.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            var id = label10.Text.Trim();   //id(string)
+            //データの取得
+            SQL s = new SQL();
+            Expenditure exp = s.Select(id);
+            dateTimePicker1.Text = exp.strDay();
+            comboBox1.Text = exp.Category;
+            textBox1.Text = exp.Detail;
+            textBox2.Text = exp.Money.ToString();
+            comboBox2.Text = exp.Payment;
+            textBox3.Text = exp.Memo; 
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             // ErrorProviderをクリアします。
             errorProvider1.Clear();
             errorProvider2.Clear();
-            var day = dateTimePicker1.Value;    //購入日
-            var category = comboBox3.SelectedItem.ToString();   //カテゴリー
-            var detail = textBox1.Text;         //購入品
+
+            var id = label10.Text.Trim();
+            var day1 = DateTime.Parse(dateTimePicker1.Text);
+            var category = comboBox1.Text;
+            var detail = textBox1.Text;
             if (string.IsNullOrWhiteSpace(detail))
             {
                 // 未入力ならエラーを通知する。
                 var msg = "支払対象を入力してください";
                 errorProvider1.SetError(textBox1, msg);
             }
-            else if (string.IsNullOrWhiteSpace(textBox2.Text))
+            else if(string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 var msg = "金額を入力してください";
                 errorProvider2.SetError(textBox2, msg);
             }
             else
             {
-                var money = int.Parse(textBox2.Text);   //金額                      
-                var payment = comboBox2.SelectedItem.ToString();   //支払い方法
-                var memo = textBox3.Text;   //メモ
-                var month = day.ToString("yyyyMM"); //使用月
+                var money = textBox2.Text;
+                var payment = comboBox2.Text;
+                var memo = textBox3.Text;
+                var month = day1.ToString("yyyyMM"); //使用月
 
-                var s = new SQL();
-                //データベースに追加する
-                s.AddExp(day, category, detail, money, payment, memo, month);
+                SQL s = new SQL();
+                //データベースを更新する
+                s.Update(id, day1, category, detail, money, payment, memo, month);
 
                 //更新後の情報を受け取る
-                var month1 = day;
+                var month1 = day1;
                 f1.dateTimePicker1.Value = month1;
                 List<string> sum = s.GetSum(month);
                 //Form1の情報を更新する
@@ -86,30 +107,24 @@ namespace Budget
                 List<Expenditure> allList = s1.GetAllList(month);
 
                 ListViewItem lvi;
-                foreach (Expenditure exp in allList)
+                foreach (Expenditure exp1 in allList)
                 {
-                    lvi = f1.listView1.Items.Add(exp.Id.ToString());
-                    lvi.SubItems.Add(exp.strDay());
-                    lvi.SubItems.Add(exp.Detail);
-                    lvi.SubItems.Add(exp.Money.ToString());
-                    lvi.SubItems.Add(exp.Payment);
-                    lvi.SubItems.Add(exp.Memo);
-
-                    this.Close();   //Form2を消す  
+                    lvi = f1.listView1.Items.Add(exp1.Id.ToString());
+                    lvi.SubItems.Add(exp1.strDay());
+                    lvi.SubItems.Add(exp1.Detail);
+                    lvi.SubItems.Add(exp1.Money.ToString());
+                    lvi.SubItems.Add(exp1.Payment);
+                    lvi.SubItems.Add(exp1.Memo);
                 }
+
+                this.Close();   //Form3を消す
             }
+            
         }
-           
-    
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void label10_Click(object sender, EventArgs e)
         {
-            // エラーアイコンを点滅なしに設定する
-            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            errorProvider2.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            comboBox3.SelectedItem = "食費";            //未入力防止初期値
-            comboBox2.SelectedItem = "現金";　           //未入力防止初期値
-        }
 
+        }
     }
 }
